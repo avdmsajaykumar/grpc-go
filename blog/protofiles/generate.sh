@@ -1,0 +1,1 @@
+protoc blog\protofiles\blog.proto --go_out=plugins=grpc:.

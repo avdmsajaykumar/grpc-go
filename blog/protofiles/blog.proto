@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+option go_package = "blogpb";
+
+message EntryRequest{
+    string id = 1;
+    string name = 2;
+    string type = 3;
+    string year = 4;
+
+}
+message CreateEntryRequest{
+    EntryRequest entry_request = 1;
+}
+
+message ResponseCreateEntry{
+    string id = 1;
+}
+
+
+message ReadEntryRequest{
+
+    string id = 1;
+
+}
+
+message ReadEntryResponse {
+
+    EntryRequest entry_request = 1;
+
+}
+
+message UpdateEntryRequest{
+
+    EntryRequest entry_request = 1;
+
+}
+
+message UpdateEntryResponse{
+    string status = 1;
+}
+
+message DeleteEntryRequest{
+
+    string id = 1;
+    
+}
+
+message DeleteEntryResponse{
+    string result = 1;
+}
+
+service BlogService{
+
+rpc CreateEntry (CreateEntryRequest) returns (ResponseCreateEntry);
+
+rpc ReadEntry (ReadEntryRequest) returns (ReadEntryResponse);
+
+rpc UpdateEntry (UpdateEntryRequest) returns (UpdateEntryResponse);
+
+rpc DeleteEntry (DeleteEntryRequest) returns (DeleteEntryResponse);
+}
